@@ -1,6 +1,6 @@
-# 🏎️ F1 Dashboard
+# F1 Dashboard
 
-## 📌 Project Overview
+## Project Overview
 The **F1 Dashboard** is a web application built using React that displays Formula 1 data such as Driver Standings (WDC) and Constructor Standings (WCC).
 
 The purpose of this project is to demonstrate:
@@ -13,7 +13,7 @@ This project is developed as part of an academic assignment to showcase practica
 
 ---
 
-## 🎯 Objectives
+## Objectives
 - Fetch and display F1 data from a public API
 - Implement search and filtering functionality
 - Create a responsive and professional UI
@@ -21,22 +21,22 @@ This project is developed as part of an academic assignment to showcase practica
 
 ---
 
-## 🌐 API Used
+## API Used
 This project uses the **Jolpica F1 API (Ergast-compatible API)**.
 
-### 🔗 Base Endpoint:
+### Base Endpoint:
 https://api.jolpi.ca/ergast/f1/
 
-### 📊 Endpoints Used:
+### Endpoints Used:
 - Driver Standings: /current/driverStandings.json
 - Constructor Standings: /current/constructorStandings.json
 
 
 ---
 
-## ✨ Features
+## Features
 
-### ✅ Core Features
+### Core Features
 - Display **Driver Standings (WDC)**
 - Display **Constructor Standings (WCC)**
 - Search drivers by name
@@ -45,14 +45,14 @@ https://api.jolpi.ca/ergast/f1/
 
 ---
 
-### ⭐ Bonus Features Implemented
+### Bonus Features Implemented
 - **Loading Indicator** – Displays a loader while fetching API data
 - **Debounced Search** – Optimized search to improve performance
-- **Local Storage (Favorites ⭐)** – Save and persist favorite drivers
+- **Local Storage (Favorites)** – Save and persist favorite drivers
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 - **React (Vite)**
 - **Tailwind CSS**
 - **JavaScript (ES6+)**
@@ -61,7 +61,7 @@ https://api.jolpi.ca/ergast/f1/
 
 ---
 
-## 🧱 Project Structure
+## Project Structure
 f1-dashboard/
 │
 ├── src/
@@ -83,9 +83,9 @@ f1-dashboard/
 ---
 
 
-## ⚙️ Setup & Installation
+## Setup & Installation
 
-### 1️⃣ Clone the repository
+### Clone the repository
 ```bash
     git clone <repo-link>
     cd f1-dashboard
@@ -111,19 +111,19 @@ Deployed using:
 
 ---
 
-🎨 UI & Design Approach
+UI & Design Approach
 - Dark theme inspired by Formula 1 aesthetics
 - Minimal and clean layout
 - Card-based and structured UI for better readability
 - Fully responsive design
 
-🚀 Future Improvements
+Future Improvements
 - Pagination or infinite scroll
 - Race schedules and results
 - Driver performance analytics
 - Progressive Web App (PWA) support
 
-📚 Learning Outcomes
+Learning Outcomes
 - Working with real-world APIs
 - Managing state in React
 - Implementing debouncing for performance optimization
