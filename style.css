@@ -1,0 +1,45 @@
+body{
+    background-color: #0b0b0b;
+    color:white
+}
+
+.driver-card,.constructor-card{
+    background: #1a1a1a;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 10px;
+}
+nav,.tabs,.search-tab{
+  display: flex;
+  justify-content: center;
+  margin:10px
+}
+
+
+#loader-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader{
+  width: 50px;
+  height: 50px;
+  border:5px solid #f3f3f3;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+}
+@keyframes spin{
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+
+#driversTab,#constructorsTab{
+  border:1px solid none;
+  border-radius: 10px;
+}
