@@ -1,16 +1,52 @@
-import loadConstructors from "./js/constructors.js";
-import loadDrivers from "./js/drivers.js"
+import { loadDrivers, initDriverControls } from './js/pages/drivers.js';
+import { loadConstructors } from './js/pages/constructors.js';
+import { loadCalendar } from './js/pages/calendar.js';
 
+let activeTab = 'drivers';
 
-export function showLoader(){
-    // document.getElementById("content").innerHTML = "Loading..."
-    document.getElementById("loader-container").className = "loader"
+const tabs = {
+    'driversTab': { load: loadDrivers, name: 'drivers' },
+    'constructorsTab': { load: loadConstructors, name: 'constructors' },
+    'calendarTab': { load: loadCalendar, name: 'calendar' }
+};
+
+function setActiveTab(tabId) {
+    // Remove active class from all
+    Object.keys(tabs).forEach(id => {
+        const el = document.getElementById(id);
+        if(el) el.classList.remove("active");
+    });
+    
+    // Add active to current
+    const currentEl = document.getElementById(tabId);
+    if(currentEl) currentEl.classList.add("active");
+    
+    activeTab = tabs[tabId].name;
+    
+    // Hide/show the controls section
+    const controls = document.getElementById("controls-container");
+    if(controls) {
+        if (activeTab === 'drivers') {
+            controls.style.display = "flex";
+        } else {
+            controls.style.display = "none";
+        }
+    }
+
+    // execute load logic
+    tabs[tabId].load();
 }
-export function showError() {
-  let loader = document.getElementById("loader-container");
-  loader.classList.remove("loader")
-  loader.innerHTML = `<p style="text-align:center">Something went wrong ❌</p>`;
-}
 
-document.getElementById("driversTab").addEventListener("click",loadDrivers)
-document.getElementById("constructorsTab").addEventListener("click",loadConstructors)
+// Bind tabs
+Object.keys(tabs).forEach(id => {
+    const el = document.getElementById(id);
+    if(el) {
+        el.addEventListener("click", () => setActiveTab(id));
+    }
+});
+
+// Boot up
+document.addEventListener("DOMContentLoaded", () => {
+    initDriverControls();
+    setActiveTab('driversTab');
+});

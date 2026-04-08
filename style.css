@@ -1,45 +1,406 @@
-body{
-    background-color: #0b0b0b;
-    color:white
+:root {
+    --bg-dark: #12141d;
+    --card-dark: #1e2029;
+    --f1-red: #e10600;
+    --text-light: #ffffff;
+    --text-muted: #8d929c;
+    --border-color: #2b303b;
+    --gold: #ffb800;
+    --silver: #a0a0a0;
+    --bronze: #cd7f32;
+    --grey-pos: #555555;
+    
+    /* Team Colors */
+    --team-mercedes: #00d2be;
+    --team-ferrari: #dc0000;
+    --team-red-bull: #0600ef;
+    --team-mclaren: #ff8700;
+    --team-aston-martin: #006f62;
+    --team-alpine: #fd4bc7;
+    --team-williams: #005aff;
+    --team-rb: #00293f;
+    --team-sauber: #00e701;
+    --team-haas: #ffffff;
 }
 
-.driver-card,.constructor-card{
-    background: #1a1a1a;
-    padding: 15px;
-    margin: 10px;
-    border-radius: 10px;
-}
-nav,.tabs,.search-tab{
-  display: flex;
-  justify-content: center;
-  margin:10px
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-
-#loader-container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* Header & Nav */
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: rgba(18, 20, 29, 0.95);
+    padding: 10px 40px;
+    border-bottom: 2px solid var(--f1-red);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    gap: 30px;
 }
 
-.loader{
-  width: 50px;
-  height: 50px;
-  border:5px solid #f3f3f3;
-  border-top: 5px solid #3498db;
-  border-radius: 50%;
-  animation: spin 2s linear infinite;
-}
-@keyframes spin{
-  from{
-    transform: rotate(0deg);
-  }
-  to{
-    transform: rotate(360deg);
-  }
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
-#driversTab,#constructorsTab{
-  border:1px solid none;
-  border-radius: 10px;
+.nav-f1-logo {
+    width: 60px;
+    height: auto;
+    object-fit: contain;
+}
+
+.brand-text h1 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.brand-text span {
+    font-size: 0.8rem;
+    color: var(--f1-red);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.tabs {
+    display: flex;
+    gap: 10px;
+}
+
+.tab-btn {
+    background-color: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tab-btn:hover {
+    color: var(--text-light);
+    border-color: #555;
+}
+
+.tab-btn.active {
+    background-color: var(--f1-red);
+    color: white;
+    border-color: var(--f1-red);
+}
+
+/* Page Header */
+.page-header {
+    padding: 0 40px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--f1-red);
+}
+
+.page-header h2 {
+    margin: 0 0 5px 0;
+    font-size: 1.8rem;
+}
+
+.page-header p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Controls */
+.controls-bar {
+    display: flex;
+    gap: 10px;
+    padding: 0 40px;
+    margin-bottom: 30px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#search-bar {
+    flex-grow: 1;
+    max-width: 400px;
+    padding: 12px 15px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-dark);
+    color: white;
+    outline: none;
+    font-size: 0.95rem;
+}
+
+#search-bar:focus {
+    border-color: var(--f1-red);
+}
+
+.filter-btn {
+    background-color: var(--card-dark);
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-weight: 500;
+}
+
+.filter-btn:hover {
+    border-color: #555;
+    color: white;
+}
+
+/* Loader */
+#loader-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    gap: 20px;
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 3px solid var(--border-color);
+    border-top: 3px solid var(--f1-red);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.loader-text {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Grids */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 25px;
+    padding: 0 40px 60px 40px;
+}
+
+.constructors-grid {
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+}
+
+/* Cards */
+.card {
+    background: var(--card-dark);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* Driver Specific */
+.driver-img-container {
+    height: 280px;
+    width: 100%;
+    background-color: #161821;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+    padding-top: 20px;
+}
+
+.driver-img {
+    width: 90%;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom;
+    transition: transform 0.3s;
+}
+
+.card:hover .driver-img {
+    transform: scale(1.05);
+}
+
+.card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.pos-wrapper {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 1.8rem;
+    font-weight: 800;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    z-index: 10;
+}
+
+.pos-1 { color: var(--gold); }
+.pos-2 { color: var(--silver); }
+.pos-3 { color: var(--bronze); }
+.pos-other { color: var(--grey-pos); }
+
+.driver-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.driver-team {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.pts-wrapper {
+    margin-top: 15px;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
+
+.pts-val {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--f1-red);
+}
+
+.pts-lbl {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.fav-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: 0.2s;
+}
+
+.fav-btn.is-fav {
+    color: var(--gold);
+    border-color: var(--gold);
+}
+
+.fav-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Constructor Specific */
+.constructor-card {
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+}
+
+.constructor-card .pos-wrapper {
+    position: static;
+    font-size: 2rem;
+    text-shadow: none;
+    margin-right: 10px;
+}
+
+.constructor-img {
+    width: 80px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.constructor-details {
+    flex-grow: 1;
+}
+
+.constructor-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+}
+
+.constructor-nat {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.constructor-card .pts-wrapper {
+    margin-top: 0;
+    text-align: right;
+    justify-content: flex-end;
+}
+
+/* Calendar Specific */
+.calendar-card {
+    padding: 20px;
+    border-left: 4px solid var(--f1-red);
+}
+
+.cal-round {
+    font-size: 0.9rem;
+    color: var(--f1-red);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0 0 10px 0;
+}
+
+.cal-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 0 15px 0;
+}
+
+.cal-detail {
+    display: flex;
+    gap: 10px;
+    margin: 8px 0;
+    color: #ccc;
+    font-size: 0.95rem;
+}
+
+.cal-detail strong {
+    color: white;
+    min-width: 70px;
 }
