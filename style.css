@@ -1,3 +1,41 @@
+.calendar-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.race-done {
+    opacity: 0.45;
+    filter: grayscale(60%);
+    border-left-color: #555 !important;
+}
+
+.race-done .cal-round,
+.race-done .cal-title,
+.race-done .cal-detail,
+.race-done .cal-detail span {
+    color: #777 !important;
+}
+
+.race-status {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.done-label {
+    background: #2a2a2a;
+    color: #777;
+}
+
+.upcoming-label {
+    background: rgba(225, 6, 0, 0.15);
+    color: var(--f1-red);
+}
+
 :root {
     --bg-dark: #12141d;
     --card-dark: #1e2029;
@@ -9,8 +47,7 @@
     --silver: #a0a0a0;
     --bronze: #cd7f32;
     --grey-pos: #555555;
-    
-    /* Team Colors */
+
     --team-mercedes: #00d2be;
     --team-ferrari: #dc0000;
     --team-red-bull: #0600ef;
@@ -31,7 +68,7 @@ body {
     padding: 0;
 }
 
-/* Header & Nav */
+
 .navbar {
     display: flex;
     align-items: center;
@@ -120,7 +157,7 @@ body {
     font-size: 0.9rem;
 }
 
-/* Controls */
+
 .controls-bar {
     display: flex;
     gap: 10px;
@@ -131,9 +168,10 @@ body {
 }
 
 #search-bar {
-    flex-grow: 1;
-    max-width: 400px;
-    padding: 12px 15px;
+    flex: 1;
+    /* take all remaining space */
+    min-width: 160px;
+    padding: 10px 15px;
     border-radius: 6px;
     border: 1px solid var(--border-color);
     background-color: var(--card-dark);
@@ -146,20 +184,64 @@ body {
     border-color: var(--f1-red);
 }
 
-.filter-btn {
+/* Dropdown selects */
+.ctrl-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: var(--card-dark);
+    color: var(--text-light);
+    border: 1px solid var(--border-color);
+    padding: 10px 36px 10px 14px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    outline: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238d929c' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    transition: border-color 0.2s;
+    white-space: nowrap;
+}
+
+.ctrl-select:focus,
+.ctrl-select:hover {
+    border-color: var(--f1-red);
+}
+
+/* Dropdown option list - dark themed */
+.ctrl-select option {
+    background-color: #1a1d2a;
+    color: var(--text-light);
+    padding: 8px;
+}
+
+.ctrl-select-wrap {
+    position: relative;
+}
+
+/* Favorites toggle button */
+.fav-toggle-btn {
     background-color: var(--card-dark);
     color: var(--text-muted);
     border: 1px solid var(--border-color);
-    padding: 10px 20px;
+    padding: 10px 18px;
     border-radius: 6px;
     cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
     transition: 0.2s;
-    font-weight: 500;
+    white-space: nowrap;
 }
 
-.filter-btn:hover {
-    border-color: #555;
-    color: white;
+.fav-toggle-btn:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+.fav-toggle-btn.active {
+    background-color: rgba(255, 184, 0, 0.15);
+    border-color: var(--gold);
+    color: var(--gold);
 }
 
 /* Loader */
@@ -187,8 +269,13 @@ body {
 }
 
 @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .hidden {
@@ -257,23 +344,34 @@ body {
 
 .pos-wrapper {
     position: absolute;
-    top: 15px;
+    top: 305px;
     left: 15px;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: 800;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
     z-index: 10;
 }
 
-.pos-1 { color: var(--gold); }
-.pos-2 { color: var(--silver); }
-.pos-3 { color: var(--bronze); }
-.pos-other { color: var(--grey-pos); }
+.pos-1 {
+    color: var(--gold);
+}
+
+.pos-2 {
+    color: var(--silver);
+}
+
+.pos-3 {
+    color: var(--bronze);
+}
+
+.pos-other {
+    color: var(--white);
+}
 
 .driver-name {
     font-size: 1.3rem;
     font-weight: 700;
-    margin: 0;
+    margin: 20px 0px;
 }
 
 .driver-team {

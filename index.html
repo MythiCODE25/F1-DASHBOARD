@@ -1,59 +1,69 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/assets/f1-logo.png" />
-    <!-- Fonts for that F1 look -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>F1 Dashboard</title>
-  </head>
-  <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-      <div class="logo-section">
-        <img src="assets/f1_logo.png" alt="F1" class="nav-f1-logo" onerror="this.src='public/f1_logo.png'">
-        <div class="brand-text">
-          <h1>F1 Dashboard</h1>
-          <span>2025 Season</span>
-        </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/assets/f1_logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>F1 Dashboard</title>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo-section">
+      <img src="assets/f1_logo.png" alt="F1" class="nav-f1-logo" onerror="this.src='public/f1_logo.png'">
+      <div class="brand-text">
+        <h1>F1 Dashboard</h1>
+        <span>2026 Season</span>
       </div>
-      <div class="tabs">
-        <button id="driversTab" class="tab-btn active">👤 Drivers</button>
-        <button id="constructorsTab" class="tab-btn">🏎️ Constructors</button>
-        <button id="calendarTab" class="tab-btn">📅 Calendar</button>
-      </div>
-    </nav>
-
-    <!-- Dynamic Header -->
-    <div id="page-header" class="page-header">
-      <h2>Championship Standings</h2>
-      <p>World Drivers' Championship · 2025</p>
     </div>
-
-    <!-- Controls -->
-    <div class="controls-bar" id="controls-container">
-      <!-- Search inside drivers only -->
-      <input type="text" id="search-bar" placeholder="🔍 Search driver..."/>
-      <button class="filter-btn" id="sort-pos-btn">Sort: Position ⬇</button>
-      <button class="filter-btn" id="sort-points-btn">Sort: Points ⭐</button>
-      <button class="filter-btn" id="filter-fav-btn">⭐ Favorites</button>
+    <div class="tabs">
+      <button id="driversTab" class="tab-btn active">👤 Drivers</button>
+      <button id="constructorsTab" class="tab-btn">🏎️ Constructors</button>
+      <button id="calendarTab" class="tab-btn">📅 Calendar</button>
     </div>
+  </nav>
 
-    <!-- Loading State -->
-    <div id="loader-container">
-      <div id="loader" class="hidden"></div>
-      <p id="loader-text" class="hidden loader-text">Loading F1 Data...</p>
+  <!-- Dynamic Header -->
+  <div id="page-header" class="page-header">
+    <h2>Championship Standings</h2>
+    <p>World Drivers' Championship · 2026</p>
+  </div>
+
+  <!-- Controls -->
+  <div class="controls-bar" id="controls-container">
+    <input type="text" id="search-bar" placeholder="🔍 Search driver..." />
+    <select id="team-filter" class="ctrl-select">
+      <option value="all">All Teams</option>
+    </select>
+    <div class="ctrl-select-wrap">
+      <select id="sort-select" class="ctrl-select">
+        <option value="position">Sort: Position</option>
+        <option value="points-desc">Sort: Points ↓</option>
+        <option value="points-asc">Sort: Points ↑</option>
+        <option value="name">Sort: Name A–Z</option>
+      </select>
     </div>
+    <button class="fav-toggle-btn" id="filter-fav-btn">⭐ Favorites</button>
+  </div>
 
-    <!-- Content Grid -->
-    <div id="content">
-      <div id="main-grid" class="grid"></div>
-    </div>
+  <!-- Loading State -->
+  <div id="loader-container">
+    <div id="loader" class="hidden"></div>
+    <p id="loader-text" class="hidden loader-text">Loading F1 Data...</p>
+  </div>
 
-    <script type="module" src="./main.js"></script>
-  </body>
+  <!-- Content Grid -->
+  <div id="content">
+    <div id="main-grid" class="grid"></div>
+  </div>
+
+  <script type="module" src="./main.js"></script>
+</body>
+
 </html>
